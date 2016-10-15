@@ -1,6 +1,5 @@
 import express = require('express');
 import path = require('path');
-
 var port: number = process.env.PORT || 3000;
 var app = express();
 

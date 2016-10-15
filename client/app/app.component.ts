@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 
 @Component({
-	selector: 'my-app',
-	template: '<h1>My First Angular App</h1>'
+    selector: "app",
+    templateUrl: "./app/app.html"
 })
-
-export class AppComponent { }
-
+export class AppComponent implements OnInit {
+    ngOnInit() {
+        console.log("Application component initialized ...");
+    }
+}
