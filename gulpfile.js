@@ -37,13 +37,13 @@ gulp.task('clean', function () {
 /**
  * Lint all custom TypeScript files.
  */
-/*gulp.task('tslint', function(tsFiles) {
+gulp.task('tslint', function(tsFiles) {
     return gulp.src(tsFiles)
         .pipe(tslint({
             formatter: 'prose'
         }))
         .pipe(tslint.report());
-});*/
+});
 
 gulp.task('build:server', function () {
     var tsProject = ts.createProject(fileConfigs.server.tsConfigFile);
@@ -96,13 +96,24 @@ gulp.task('build:index', function () {
 
 gulp.task('build:app', function () {
     var tsProject = ts.createProject(fileConfigs.client.tsConfigFile);
+
     var tsResult = gulp.src(fileConfigs.client.sourceTsFiles)
         .pipe(sourcemaps.init())
         .pipe(ts(tsProject))
+
     return tsResult.js
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write(".", {sourceRoot: '/client'}))
         .pipe(gulp.dest(fileConfigs.bundle.outputDirectory))
 });
+
+/**
+ * Copy all resources that are not TypeScript files into build directory.
+ */
+gulp.task("build:resources", () => {
+    return gulp.src(["client/**/*", "!**/*.ts"])
+        .pipe(gulp.dest(fileConfigs.bundle.outputDirectory));
+});
+
 
 
 /**
