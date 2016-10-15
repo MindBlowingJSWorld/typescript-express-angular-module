@@ -4,18 +4,33 @@ import path = require('path');
 var app = express();
 var port: number = process.env.PORT || 3000;
 
-// Add headers
-app.use(function (req, res, next) {
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    // Pass to next layer of middleware
-    next();
-});
+// None of follwing works :(
+app.use(express.static(__dirname));
 
-// Setting the context root for client code
-app.use('/', express.static(__dirname + '/'));
+/*
+app.use('/', express.static(__dirname));
+app.use('/app', express.static('app'));
+*/
+
+/*
+app.use(express.static(path.join(__dirname, '/')));
+*/
+
+/*
+app.use('/app', express.static(__dirname + 'app'));
+app.use('/libs', express.static(__dirname + 'libs'));
+*/
+
+/*
+app.use('/app', express.static(path.resolve(__dirname, 'app')));
+app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
+
+var renderIndex = (req: express.Request, res: express.Response) => {
+    res.sendFile(path.resolve(__dirname, 'index.html'));
+}
+
+app.get('/*', renderIndex);
+*/
 
 var server = app.listen(port, function() {
     var host = server.address().address;
