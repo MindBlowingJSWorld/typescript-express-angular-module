@@ -1,30 +1,33 @@
-import {NgModule}      from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
-import {AppComponent} from "./app.component";
-import {TaskListComponent} from "./todo/components/task-list.component";
-import {AboutComponent} from "./about/components/about.component";
-import {TaskComponent} from "./todo/components/task.component";
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api/in-memory-web-api.module';
+import { InMemoryDataService } from './in-memory-data.service';
 
-import {routing, appRoutingProviders} from './app.routing';
-import {FormsModule} from "@angular/forms";
+import './rxjs-extensions';
+import { AppComponent } from './app.component';
+import { AppRoutingModule, routedComponents } from './app-routing.module';
+import { HeroService } from './hero.service';
+import { HeroSearchComponent } from './hero-search.component';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        routing
-    ],
-    declarations: [
-        AppComponent,
-        TaskComponent,
-        TaskListComponent,
-        AboutComponent
-    ],
-    providers: [
-        appRoutingProviders
-    ],
-    bootstrap: [AppComponent]
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 600 })
+  ],
+  declarations: [
+    AppComponent,
+    HeroSearchComponent,
+    routedComponents
+  ],
+  providers: [
+    HeroService
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

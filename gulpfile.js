@@ -70,7 +70,8 @@ gulp.task('build:libs', function () {
         'reflect-metadata/Reflect.js',
         'rxjs/**/*.js',
         'zone.js/dist/**',
-        '@angular/**/bundles/**'
+        '@angular/**/bundles/**',
+        'angular-in-memory-web-api/*.js'
     ];
 
      var mappedPaths = dependencies.map(file => {return path.resolve('node_modules', file)}) 

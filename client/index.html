@@ -1,28 +1,27 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <title>typescript express angular module QuickStart</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+  <title>Angular 2 Tour of Heroes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- 1. Load libraries -->
-    <!-- Polyfill(s) for older browsers -->
-    <script src="libs/core-js/client/shim.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
 
-    <script src="libs/zone.js/dist/zone.js"></script>
-    <script src="libs/reflect-metadata/Reflect.js"></script>
-    <script src="libs/systemjs/dist/system.src.js"></script>
+  <!-- IE required polyfills, in this exact order -->
+  <script src="libs/core-js/client/shim.min.js"></script>
+  <script src="libs/zone.js/dist/zone.js"></script>
+  <script src="libs/reflect-metadata/Reflect.js"></script>
+  <script src="libs/systemjs/dist/system.src.js"></script>
 
-    <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js"></script>
-    <script>
-        System.import('app')
-                .then(null, console.error.bind(console));
-    </script>
-
+  <script>
+    System.import('system-config.js').then(function () {
+        System.import('main');
+      }).catch(console.error.bind(console));
+  </script>
 </head>
 
-<!-- 3. Display the application -->
 <body>
-<app>Loading...</app>
+  <my-app>Loading...</my-app>
 </body>
 
 </html>
