@@ -1,16 +1,30 @@
-# typescript-express-angular-module
+# Angular2 Beta with Gulp, Typescript, and Express  
 
-##Get Started
+This uses SystemJS and a minimally configured gulpfile. **This app uses HTML5 location paths.
+This app isn't meant to overwhelm you with an intensely complex gulp build system.**
 
-#Install Dependencies and typings 
+If you're submitting pull requests please keep in mind that we shouldn't add features. Most examples are complete overkill for Angular2 beginners and we should just keep to the base libraries involved.
+
+I tried to be as explicit as possible.
+I believe it to be organized well enough for you to create a more robust app.
+
+I have purposefully made this project as THIN on the gulp side as possible as not to overwhelm people. 
+
+It's a supplement to this article: 
+
+[http://blog.edenmsg.com/angular2-typescript-gulp-and-expressjs/](http://blog.edenmsg.com/angular2-typescript-gulp-and-expressjs/) 
+
+Getting Started, grab the dependencies with:
+
 `npm install`
 
-#build both client and server applications
+then run
+
 `gulp`
 
-#Go to dist and run node app
-`cd dist`
-`node server`
+To run the server do this:
 
-#visit browser to check application 
-`http://localhost:3000`   
+```shell
+node dist/server.js
+```
+

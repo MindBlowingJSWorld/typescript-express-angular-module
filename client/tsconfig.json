@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "dist/app",
-    "target": "es5",
+    "target": "ES5",
     "module": "system",
     "moduleResolution": "node",
     "sourceMap": true,
